@@ -1,0 +1,36 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo Installing Terraform...
+      - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
+      - unzip terraform.zip
+      - mv terraform /usr/local/bin/
+      - terraform -version
+
+  pre_build:
+    commands:
+      - echo "Logging AWS identity"
+      - aws sts get-caller-identity
+
+  build:
+    commands:
+      - echo "=== Applying vpc-infra ==="
+      - cd vpc-infra
+      - terraform init
+      - terraform plan
+      - terraform apply -auto-approve
+      - cd ..
+
+      - echo "=== Applying vpc-endpoint-infra ==="
+      - cd vpc-endpoint-infra
+      - terraform init
+      - terraform apply -auto-approve
+      - cd ..
+
+  post_build:
+    commands:
+      - echo "✅ Both Terraform modules deployed successfully!"
