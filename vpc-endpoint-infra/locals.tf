@@ -28,6 +28,6 @@ locals{
     ssmmessages_endpoint_tags =  {
         owners = local.owners
         environment = local.environment
-        Name = ssmmessages_name
+        Name = local.ssmmessages_name
     }
 }
