@@ -1,7 +1,7 @@
 locals{
     owners = var.business_division
     environment = var.environment
-    name = "${var.business_division}-${var.environment}-${var.vpc_name}"
+    name = "${var.business_division}-${var.environment}"
     private_subnet_names = [
         for az in var.vpc_availability_zones : "${local.name}-private-${az}"
     ]
