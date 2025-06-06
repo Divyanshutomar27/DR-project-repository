@@ -62,7 +62,7 @@ module "vpc_endpoints" {
     ssm = {
       service             = "ssm"
       service_type        = "Interface"
-      private_dns_enabled = true
+      # private_dns_enabled = true
       subnet_ids = [data.aws_subnet.private_subnet1.id, data.aws_subnet.private_subnet2.id]
       tags = local.ssm_endpoint_tags
     }
@@ -70,7 +70,7 @@ module "vpc_endpoints" {
     ec2messages = {
       service             = "ec2messages"
       service_type        = "Interface"
-      private_dns_enabled = true
+      # private_dns_enabled = true
       subnet_ids = [data.aws_subnet.private_subnet1.id, data.aws_subnet.private_subnet2.id]
       tags = local.ec2messages_endpoint_tags
     }
@@ -78,7 +78,7 @@ module "vpc_endpoints" {
     ssmmessages = {
       service             = "ssmmessages"
       service_type        = "Interface"
-      private_dns_enabled = true
+      # private_dns_enabled = true
       subnet_ids = [data.aws_subnet.private_subnet1.id, data.aws_subnet.private_subnet2.id]
       tags = local.ssmmessages_endpoint_tags
     }
