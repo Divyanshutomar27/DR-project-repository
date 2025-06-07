@@ -30,6 +30,6 @@ module "vpc"{
 
 resource "aws_db_subnet_group" "database_subnet_group" {
   name        = "business-division-1-dev"
-  description = "Database subnet group for business-division-1-dev"
+  description = "Database subnet group for business division group"
   subnet_ids  = module.vpc.database_subnets
 }
