@@ -16,6 +16,8 @@ module "vpc"{
 
     # database subnet name #
     database_subnet_names =  local.database_subnet_names
+    # Disable automatic DB subnet group creation
+    create_database_subnet_group = false
 
     # ✅ Enable auto-assign public IPs on public subnets
     public_subnet_tags = {
@@ -24,4 +26,10 @@ module "vpc"{
 
     tags = local.common_tags
     
+}
+
+resource "aws_db_subnet_group" "database_subnet_group" {
+  name        = "business-division-1-dev"
+  description = "Database subnet group for business-division-1-dev"
+  subnet_ids  = module.vpc.database_subnets
 }
