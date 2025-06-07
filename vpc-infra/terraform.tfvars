@@ -1,6 +1,6 @@
 aws_region = "ap-south-1"
 environment = "dev"
-business_division = "Business-Division-1"
+business_division = "Business-Division"
 vpc_name  =  "dev-vpc"
 vpc_cidr_block = "10.0.0.0/16"
 vpc_availability_zones = ["ap-south-1a", "ap-south-1b"]
