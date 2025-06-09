@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+    commands:
+      - echo Installing Terraform...
+      - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.11.4/terraform_1.11.4_linux_amd64.zip
+      - unzip terraform.zip
+      - mv terraform /usr/local/bin/
+      - terraform -version
+
+  pre_build:
+    commands:
+      - echo "Logging AWS identity"
+      - aws sts get-caller-identity
+
+  build:
+    commands:
+      - echo "=== Applying vpc-infra ==="
+      - cd vpc-infra
+      - terraform init
+      - terraform validate
+      - terraform plan
+      - terraform apply -auto-approve
+      - cd ..
+
+  post_build:
+    commands:
+      - echo "✅ Terraform VPC-Infra module deployed successfully!"
