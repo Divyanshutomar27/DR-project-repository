@@ -2,7 +2,7 @@
 data "aws_vpc" "vpc_id"{
     filter{
         name = "tag:Name"
-        values = ["Business-Division-1-dev"]
+        values = ["Business-Division-dev"]
     }
 }
 
@@ -10,7 +10,7 @@ data "aws_vpc" "vpc_id"{
 data "aws_subnet"  "private_subnet1" {
   filter {
     name = "tag:Name"
-    values = ["Business-Division-1-dev-private-ap-south-1a"]
+    values = ["Business-Division-dev-private-ap-south-1a"]
   }
 }
 
@@ -18,14 +18,14 @@ data "aws_subnet"  "private_subnet1" {
 data "aws_subnet"  "public_subnet1" {
   filter {
     name = "tag:Name"
-    values = ["Business-Division-1-dev-public-ap-south-1a"]
+    values = ["Business-Division-dev-public-ap-south-1a"]
   }
 }
 
 data "aws_subnet"  "private_subnet2" {
   filter {
     name = "tag:Name"
-    values = ["Business-Division-1-dev-private-ap-south-1b"]
+    values = ["Business-Division-dev-private-ap-south-1b"]
   }
 }
 
