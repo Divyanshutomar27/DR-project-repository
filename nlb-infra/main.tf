@@ -2,7 +2,7 @@
 data "aws_instance" "application_ec2"{
     filter{
         name = "tag:Name"
-        values = ["Business-Division-dev-1-ec2"]
+        values = ["Business-Division-1-dev-ec2"]
     }
 }
 
