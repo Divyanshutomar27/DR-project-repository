@@ -106,6 +106,6 @@ resource "aws_lb_target_group" "ec2-tg" {
 
 resource "aws_lb_target_group_attachment" "ec2_ip_target" {
   target_group_arn = aws_lb_target_group.ec2-tg.arn
-  target_id        = "10.0.101.117"
+  target_id        = "10.0.101.246"
   port             = 80
 }
